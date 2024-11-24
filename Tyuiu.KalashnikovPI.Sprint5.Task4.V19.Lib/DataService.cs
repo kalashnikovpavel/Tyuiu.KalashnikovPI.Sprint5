@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Globalization;
+using System.IO;
 using tyuiu.cources.programming.interfaces.Sprint5;
 namespace Tyuiu.KalashnikovPI.Sprint5.Task4.V19.Lib
 {
@@ -6,9 +7,25 @@ namespace Tyuiu.KalashnikovPI.Sprint5.Task4.V19.Lib
     {
         public double LoadFromDataFile(string path)
         {
-            //path = Path.Combine(new string[] { Path.GetTempPath(), "InPutDataFileTask4V19.txt" });
-            string strX = File.ReadAllText(path);
-            double res = Math.Round(Math.Pow((Convert.ToDouble(strX) / Math.Cos(Convert.ToDouble(strX))), 2), 3);
+
+            string strX = File.ReadAllText(path).Trim();
+
+            // Проверяем, не является ли строка пустой
+            if (string.IsNullOrWhiteSpace(strX))
+            {
+                throw new FormatException("Файл пуст или не содержит данных.");
+            }
+
+            // Пробуем преобразовать строку в число
+            double x;
+            // Используем CultureInfo.InvariantCulture для обработки чисел
+            if (!double.TryParse(strX, NumberStyles.Any, CultureInfo.InvariantCulture, out x))
+            {
+                throw new FormatException($"Строка '{strX}' не содержит корректное числовое значение.");
+            }
+
+            // Выполняем расчет
+            double res = Math.Round(Math.Pow((x / Math.Cos(x)), 2), 3);
             return res;
         }
     }
