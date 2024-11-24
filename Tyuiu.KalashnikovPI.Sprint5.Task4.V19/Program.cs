@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using Tyuiu.KalashnikovPI.Sprint5.Task4.V19.Lib;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 namespace Tyuiu.KalashnikovPI.Sprint5.Task4.V19
 {
     internal class Program
@@ -24,7 +25,7 @@ namespace Tyuiu.KalashnikovPI.Sprint5.Task4.V19
             Console.WriteLine("* ИСХОДНЫЕ ДАННЫНЕ:                                                       *");
             Console.WriteLine("***************************************************************************");
 
-            string path = Path.Combine(Path.GetTempPath(), "InPutDataFileTask4V19.txt");
+            string path ="/app/data/AssesmentData/C#/Sprint5Task4/InPutDataFileTask4V19.txt";
             
 
 
