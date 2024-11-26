@@ -36,7 +36,7 @@ namespace Tyuiu.KalashnikovPI.Sprint5.Task7.V25.Lib
                     }
 
                     
-                    File.AppendAllText(pathSaveFile, strLine.ToString().Trim() + Environment.NewLine);
+                    File.AppendAllText(pathSaveFile, strLine.ToString() + Environment.NewLine);
                 }
             }
 
